@@ -1,8 +1,22 @@
 	pipeline
 	{
 		agent any
+
+		environment {
+        			GIT_SSH_KEY = credentials('ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDL0bAToe7cOEl2peeHkLAzHCH3xnYpY2z6kqBmWJXSLwLM9yrGcHikjQLsxXY8qWvnGjZ/WLEGQ6fqNBbpQD0L8+GL0+ETIzioAq5ImkrF0UgGX5DbzDxpYj9+MoxpAUq5PZE5AKPW5InW6zjVc78mdGZPxe4LUVHC52LpSk7+0K5p4ywfgi+6t/VyBH+XiKFw5rNd0BRYjMpJMynWRdKRqVbk/aJ/9w2tFY0YQi3DLMeiJy1KPIoWTxBeRfnXSWT5YcmUa9q9aSfqORZh6/pgW9UsiTnsnKEixaWb/0IODIVTsKjGxflb/rpNccrMdSJLVoyUNJPdhHeDMBydblAyWQrIbUfE0bqA8Mmmpu12WqohHcwzHXtP9US/C7Csw3ciqosxbiFx6bkEa5jw6kzuX43xjTyETOP5SY/IuC0WmtuD7vRd30Anjq2RJkwgHkomGJ4BKbrkr6TQN1XBk8XMGN4fH17pd4D+fKcj+etoS5Qvh8OVNTCR9zRgRpm0IrmuG+5ULI025GSD5YDU+fGgrAKA2PyfHLFbwgjS+p18FEhnWKZFEN4HAIO6/P9SP/dlVczHjSJ8hvPat1YAdGaRIa6zV0XAcWpmYEnr0pCHVTxueG660dtBhkiz8T5FRD44IQnJFwHtfL6emxKE0OfXvl+nmLkT8UTgyRmkAG9JfQ== prasadkumar.sahoo@gmail.com')  
+    		}
+
 		stages
 		{
+
+			stage('GitCheckout')
+			{
+				steps
+				{
+					sh "ssh-agent bash -c 'ssh-add ${GIT_SSH_KEY}; git clone git@github.com:Prasad1404/maven.git'"
+				}
+
+			}
 			stage('ContDownload')
 			{
 				steps
