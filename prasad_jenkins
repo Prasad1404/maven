@@ -7,7 +7,7 @@
 			{
 				steps
 				{
-					git 'https://github.com/intelliqittrainings/maven.git'
+					git 'https://github.com/Prasad1404/maven/blob/master'
 				}
 
 			}
